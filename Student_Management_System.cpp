@@ -1,6 +1,38 @@
 #include"bits/stdc++.h"
 #include<conio.h>
+#define MAX_NAME_LEN 60
 using namespace std;
+bool stafflogin();
+int input(){
+    cout<<"Enter 1 for Staff login: "<<endl;
+    cout<<"Enter 2 for student login: "<<endl;
+    int key;
+    cin>>key;
+    return key;
+    //if(key==1) stafflogin();
+
+}
+bool stafflogin(){
+    bool flag=false;
+    string s,pass;
+    cout<<"Enter User Id: "<<endl;
+    cin>>s;
+    if(s=="pprl735757@gmail.com"){
+        cout<<"Enter password"<<endl;
+        cin>>pass;
+        if(pass=="Rocky@7061"){
+            flag=true;
+        }
+        else{
+            cout<<"Wrong Password !"<<endl; 
+        }
+    }
+    else{
+        cout<<"Invalid User Id: Try again !!"<<endl;
+        //input();
+    }
+    return flag;
+}
 class Node{
     public:
         int roll_no;
@@ -15,39 +47,37 @@ class Node{
 class student_Details{
     public:
        Node *head =NULL;
-       void Insert(){
-        int roll;
-        string name;
-        float marks;
-        string gender;
-        cout<<"Enter Student's Roll no.  "<<endl;
-        cin>>roll;
-        cout<<"Enter Student's Name  "<<endl;
-        cin>>name;
-        cout<<"Enter Student's Marks.  "<<endl;
-        cin>>marks;
-        cout<<"Enter Student's Gender  "<<endl;
-        cin>>gender;
-        Node *new_node=new Node;
-        new_node->roll_no=roll;
-        new_node->student_name=name;
-        new_node->student_marks=marks;
-        new_node->student_gender=gender;
-        new_node->next_add=NULL;
-        if(head==NULL) head=new_node;
-        else {
-            Node *ptr=head;
-            while(ptr->next_add!=NULL){
-                ptr=ptr->next_add;
+       void Insert(int roll){
+            string name;
+            float marks;
+            string gender;
+            //char MAX_NAME_LEN;
+            cout<<"Enter Student's Name  "<<endl;
+            cin>>name;
+            cout<<"Enter Student's Marks.  "<<endl;
+            cin>>marks;
+            cout<<"Enter Student's Gender  "<<endl;
+            cin>>gender;
+            Node *new_node=new Node;
+            new_node->roll_no=roll;
+            new_node->student_name=name;
+            new_node->student_marks=marks;
+            new_node->student_gender=gender;
+            new_node->next_add=NULL;
+            if(head==NULL) head=new_node;
+            else {
+                Node *ptr=head;
+                while(ptr->next_add!=NULL){
+                    ptr=ptr->next_add;
+                }
+                ptr->next_add=new_node;
             }
-            ptr->next_add=new_node;
-        }
-       
-        cout<<endl<<"New Node Inserted successfully...."<<endl;
+        
+            cout<<endl<<"New Node Inserted successfully...."<<endl;
        }
-        bool search(){
+        void search(){
             bool found=false;
-            if(head==NULL) cout<<"Empty List"<<endl;
+            if(head==NULL) found=false;
             else {
                 int n;
                 //bool found= false;
@@ -64,15 +94,30 @@ class student_Details{
                     }
                     ptr=ptr->next_add;
                 }
-                if(found==false) cout<<"!! Data note Found.."<<endl;
+                if(found==false) cout<<"! Data note Found.."<<endl;
+
+            }
+
+        }
+        bool check(int roll){
+            bool found=false;
+            if(head==NULL) found=false;
+            else {
+                int n=roll;
+                //bool found= false;
+                Node *ptr=head;
+                while(ptr!=NULL){
+                    if(n==ptr->roll_no){
+                        found=true;
+                    }
+                    ptr=ptr->next_add;
+                }
 
             }
             return found;
 
         }
         void count(){
-            if(head==NULL) cout<<"! List Empty"<<endl;
-            else{
                 int c=0;
                 Node *ptr=head;
                 while (ptr!=NULL)
@@ -80,16 +125,14 @@ class student_Details{
                     c++;
                     ptr=ptr->next_add;
                 }
-                cout<<"total No. of Nodes are : "<<c<<endl;
+                if(c>0) cout<<"total No. of Student's are : "<<c<<endl;
                 
-            }
+            
         }
         void update(){
             if(head==NULL) cout<<"Empty List"<<endl;
             else {
                 int n;
-                cout<<"Enter Roll no. for update details: "<<endl;
-                cin>>n;
                 bool found= false;
                 cout<<"Enter Roll no:  ";
                 cin>>n;
@@ -121,8 +164,6 @@ class student_Details{
                 cout<<"Enter Roll no. for Deletion: "<<endl;
                 cin>>n;
                 bool found= false;
-                cout<<"Enter Roll no:  ";
-                cin>>n;
                 if(n==head->roll_no){
                     Node *ptr=head;
                     head=head->next_add;
@@ -174,50 +215,65 @@ class student_Details{
 
 
 };
+
 int main(){
-    student_Details students;
-    p:
-    system("cls");
-    int your_choice;
-    cout<<"press 1 for save student's details "<<endl;
-    cout<<"press 2 for search student's details "<<endl;
-    cout<<"press 3 to student's show details "<<endl;
-    cout<<"press 4 for update student's details "<<endl;
-    cout<<"press 5 for delete student's details "<<endl;
-    cout<<"press 6 for Exit "<<endl;
-    cin>>your_choice;
-    switch (your_choice)
-    {
-    case 1:
-        system("cls");
-        if(students.search()) cout<<"Already exits"<<endl;
-        else students.Insert();
-        break;
-    case 2:
-        system("cls");
-        students.search();
-        break;
-    case 3:
-        system("cls");
-        students.count();
-        students.show();
-        break;
-    case 4:
-        system("cls");
-        students.update();
-        break;
-    case 5:
-        system("cls");
-        students.del();
-        break;
-    case 6:
-        exit(0);
-    
-    default:
-        cout<<"! Invalid choice... Try again.";
+    int dis=178;
+    char x=dis;
+    for(int i=0;i<15;i++) cout<<x;
+    cout<<"  WELL COME  ";
+    for(int i=0;i<15;i++) cout<<x;
+    cout<<endl<<endl;;
+    int inpu=input();
+    if(inpu==1){
+        if(stafflogin()){
+            int roll;
+            student_Details students;
+            p:
+            system("cls");
+            int your_choice;
+            cout<<"press 1 for save student's details "<<endl;
+            cout<<"press 2 for search student's details "<<endl;
+            cout<<"press 3 to student's show details "<<endl;
+            cout<<"press 4 for update student's details "<<endl;
+            cout<<"press 5 for delete student's details "<<endl;
+            cout<<"press 6 for Exit "<<endl;
+            cin>>your_choice;
+            switch (your_choice)
+            {
+            case 1:
+                system("cls");
+                cout<<"Enter Student's Roll no.  "<<endl;
+                cin>>roll;
+                if(students.check(roll)) cout<<"Already exits"<<endl;
+                else students.Insert(roll);
+                break;
+            case 2:
+                system("cls");
+                students.search();
+                break;
+            case 3:
+                system("cls");
+                students.count();
+                students.show();
+                break;
+            case 4:
+                system("cls");
+                students.update();
+                break;
+            case 5:
+                system("cls");
+                students.del();
+                break;
+            case 6:
+                exit(0);
+            
+            default:
+                cout<<"! Invalid choice... Try again.";
+            }
+            getch();
+            goto p;
+        }
     }
-    getch();
-    goto p;
 
 
 }
