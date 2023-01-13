@@ -1,8 +1,7 @@
 #include"bits/stdc++.h"
 #include<conio.h>
-#define MAX_NAME_LEN 60
 using namespace std;
-bool stafflogin();
+/*bool stafflogin();
 int input(){
     cout<<"Enter 1 for Staff login: "<<endl;
     cout<<"Enter 2 for student login: "<<endl;
@@ -32,7 +31,7 @@ bool stafflogin(){
         //input();
     }
     return flag;
-}
+}*/
 class Node{
     public:
         int roll_no;
@@ -223,9 +222,9 @@ int main(){
     cout<<"  WELL COME  ";
     for(int i=0;i<15;i++) cout<<x;
     cout<<endl<<endl;;
-    int inpu=input();
+    /*int inpu=input();
     if(inpu==1){
-        if(stafflogin()){
+        if(stafflogin()){*/
             int roll;
             student_Details students;
             p:
@@ -273,7 +272,7 @@ int main(){
             getch();
             goto p;
         }
-    }
+    //}
 
 
-}
+//}
