@@ -1,37 +1,8 @@
 #include"bits/stdc++.h"
 #include<conio.h>
 using namespace std;
-/*bool stafflogin();
-int input(){
-    cout<<"Enter 1 for Staff login: "<<endl;
-    cout<<"Enter 2 for student login: "<<endl;
-    int key;
-    cin>>key;
-    return key;
-    //if(key==1) stafflogin();
 
-}
-bool stafflogin(){
-    bool flag=false;
-    string s,pass;
-    cout<<"Enter User Id: "<<endl;
-    cin>>s;
-    if(s=="pprl735757@gmail.com"){
-        cout<<"Enter password"<<endl;
-        cin>>pass;
-        if(pass=="Rocky@7061"){
-            flag=true;
-        }
-        else{
-            cout<<"Wrong Password !"<<endl; 
-        }
-    }
-    else{
-        cout<<"Invalid User Id: Try again !!"<<endl;
-        //input();
-    }
-    return flag;
-}*/
+//version 1.2
 class Node{
     public:
         int roll_no;
@@ -222,9 +193,7 @@ int main(){
     cout<<"  WELL COME  ";
     for(int i=0;i<15;i++) cout<<x;
     cout<<endl<<endl;;
-    /*int inpu=input();
-    if(inpu==1){
-        if(stafflogin()){*/
+    
             int roll;
             student_Details students;
             p:
@@ -272,7 +241,4 @@ int main(){
             getch();
             goto p;
         }
-    //}
-
-
-//}
+ 
